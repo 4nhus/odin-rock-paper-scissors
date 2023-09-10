@@ -51,3 +51,35 @@ function playRound(playerSelection, computerSelection) {
             return "Invalid choice for player!";
     }
 }
+
+function game() {
+    let playerScore = 0;
+    let computerscore = 0;
+
+    for (i = 0; i < 5; i++) {
+        const roundResult = playRound(prompt("Enter your choice out of rock, paper, or scissors:"), getComputerChoice());
+
+        console.log(roundResult);
+
+        if (roundResult.includes("Win")) {
+            playerScore++;
+            console.log(`Your score is now ${playerScore} and computer score is still ${computerscore}.`);
+        } else if (roundResult.includes("Lose")) {
+            computerscore++;
+            console.log(`Your score is still ${playerScore} and computer score is now ${computerscore}.`);
+        } else {
+            console.log(`Your score is still ${playerScore} and computer score is still ${computerscore}.`);
+        }
+
+    }
+
+    if (playerScore > computerscore) {
+        console.log("You have won the best of 5!");
+    } else if (playerScore < computerscore) {
+        console.log("You have lost the best of 5...");
+    } else {
+        console.log("It's a tie in best of 5!");
+    }
+}
+
+game();
